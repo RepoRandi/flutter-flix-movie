@@ -1,5 +1,3 @@
-import 'package:flix_movie/data/dummies/dummy_authentication.dart';
-import 'package:flix_movie/data/dummies/dummy_user_repository.dart';
 import 'package:flix_movie/data/firebase/firebase_authentication.dart';
 import 'package:flix_movie/data/firebase/firebase_user_repository.dart';
 import 'package:flix_movie/domain/usecases/login/login.dart';
