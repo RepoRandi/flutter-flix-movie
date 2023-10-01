@@ -46,7 +46,7 @@ class FirebaseTransactionRepository implements TransactionRepository {
   }
 
   @override
-  Future<Result<List<Transaction>>> getUserTransaction(
+  Future<Result<List<Transaction>>> getUserTransactions(
       {required String uid}) async {
     firestore.CollectionReference<Map<String, dynamic>> transactions =
         _firebaseFirestore.collection('transactions');
