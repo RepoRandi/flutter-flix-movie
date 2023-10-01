@@ -25,7 +25,6 @@ mixin _$Transaction {
   int? get transactionTime => throw _privateConstructorUsedError;
   String? get transactionImage => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
   List<String> get seats => throw _privateConstructorUsedError;
   String? get theaterName => throw _privateConstructorUsedError;
   int? get watchingTime => throw _privateConstructorUsedError;
@@ -53,7 +52,6 @@ abstract class $TransactionCopyWith<$Res> {
       int? transactionTime,
       String? transactionImage,
       String title,
-      String name,
       List<String> seats,
       String? theaterName,
       int? watchingTime,
@@ -82,7 +80,6 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
     Object? transactionTime = freezed,
     Object? transactionImage = freezed,
     Object? title = null,
-    Object? name = null,
     Object? seats = null,
     Object? theaterName = freezed,
     Object? watchingTime = freezed,
@@ -112,10 +109,6 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
       seats: null == seats
           ? _value.seats
@@ -167,7 +160,6 @@ abstract class _$$_TransactionCopyWith<$Res>
       int? transactionTime,
       String? transactionImage,
       String title,
-      String name,
       List<String> seats,
       String? theaterName,
       int? watchingTime,
@@ -194,7 +186,6 @@ class __$$_TransactionCopyWithImpl<$Res>
     Object? transactionTime = freezed,
     Object? transactionImage = freezed,
     Object? title = null,
-    Object? name = null,
     Object? seats = null,
     Object? theaterName = freezed,
     Object? watchingTime = freezed,
@@ -224,10 +215,6 @@ class __$$_TransactionCopyWithImpl<$Res>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String,
       seats: null == seats
           ? _value._seats
@@ -274,7 +261,6 @@ class _$_Transaction implements _Transaction {
       this.transactionTime,
       this.transactionImage,
       required this.title,
-      required this.name,
       final List<String> seats = const [],
       this.theaterName,
       this.watchingTime,
@@ -298,8 +284,6 @@ class _$_Transaction implements _Transaction {
   final String? transactionImage;
   @override
   final String title;
-  @override
-  final String name;
   final List<String> _seats;
   @override
   @JsonKey()
@@ -327,7 +311,7 @@ class _$_Transaction implements _Transaction {
 
   @override
   String toString() {
-    return 'Transaction(id: $id, uid: $uid, transactionTime: $transactionTime, transactionImage: $transactionImage, title: $title, name: $name, seats: $seats, theaterName: $theaterName, watchingTime: $watchingTime, ticketAmount: $ticketAmount, ticketPrice: $ticketPrice, adminFee: $adminFee, total: $total, balance: $balance)';
+    return 'Transaction(id: $id, uid: $uid, transactionTime: $transactionTime, transactionImage: $transactionImage, title: $title, seats: $seats, theaterName: $theaterName, watchingTime: $watchingTime, ticketAmount: $ticketAmount, ticketPrice: $ticketPrice, adminFee: $adminFee, total: $total, balance: $balance)';
   }
 
   @override
@@ -342,7 +326,6 @@ class _$_Transaction implements _Transaction {
             (identical(other.transactionImage, transactionImage) ||
                 other.transactionImage == transactionImage) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._seats, _seats) &&
             (identical(other.theaterName, theaterName) ||
                 other.theaterName == theaterName) &&
@@ -367,7 +350,6 @@ class _$_Transaction implements _Transaction {
       transactionTime,
       transactionImage,
       title,
-      name,
       const DeepCollectionEquality().hash(_seats),
       theaterName,
       watchingTime,
@@ -398,7 +380,6 @@ abstract class _Transaction implements Transaction {
       final int? transactionTime,
       final String? transactionImage,
       required final String title,
-      required final String name,
       final List<String> seats,
       final String? theaterName,
       final int? watchingTime,
@@ -421,8 +402,6 @@ abstract class _Transaction implements Transaction {
   String? get transactionImage;
   @override
   String get title;
-  @override
-  String get name;
   @override
   List<String> get seats;
   @override

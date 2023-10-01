@@ -11,7 +11,6 @@ class Transaction with _$Transaction {
     int? transactionTime,
     String? transactionImage,
     required String title,
-    required String name,
     @Default([]) List<String> seats,
     String? theaterName,
     int? watchingTime,

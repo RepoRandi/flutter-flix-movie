@@ -13,7 +13,6 @@ _$_Transaction _$$_TransactionFromJson(Map<String, dynamic> json) =>
       transactionTime: json['transactionTime'] as int?,
       transactionImage: json['transactionImage'] as String?,
       title: json['title'] as String,
-      name: json['name'] as String,
       seats:
           (json['seats'] as List<dynamic>?)?.map((e) => e as String).toList() ??
               const [],
@@ -33,7 +32,6 @@ Map<String, dynamic> _$$_TransactionToJson(_$_Transaction instance) =>
       'transactionTime': instance.transactionTime,
       'transactionImage': instance.transactionImage,
       'title': instance.title,
-      'name': instance.name,
       'seats': instance.seats,
       'theaterName': instance.theaterName,
       'watchingTime': instance.watchingTime,
