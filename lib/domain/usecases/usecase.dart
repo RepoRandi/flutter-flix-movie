@@ -1,3 +1,3 @@
 abstract interface class UseCase<R, P> {
-  Future<R> call(P param);
+  Future<R> call(P params);
 }
