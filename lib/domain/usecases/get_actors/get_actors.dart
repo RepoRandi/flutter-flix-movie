@@ -4,10 +4,10 @@ import 'package:flix_movie/domain/entities/result/result.dart';
 import 'package:flix_movie/domain/usecases/get_actors/get_actors_param.dart';
 import 'package:flix_movie/domain/usecases/usecase.dart';
 
-class GetActor implements UseCase<Result<List<Actor>>, GetActorsParam> {
+class GetActors implements UseCase<Result<List<Actor>>, GetActorsParam> {
   final MovieRepository _movieRepository;
 
-  GetActor({required MovieRepository movieRepository})
+  GetActors({required MovieRepository movieRepository})
       : _movieRepository = movieRepository;
 
   @override
