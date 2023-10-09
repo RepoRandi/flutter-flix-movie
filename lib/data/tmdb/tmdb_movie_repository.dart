@@ -59,7 +59,7 @@ class TmdbMovieRepository implements MovieRepository {
           'https://api.themoviedb.org/3/movie/$category?language=en-US&page=$page',
           options: _options);
 
-      final result = List<Map<String, dynamic>>.from(response.data['result']);
+      final result = List<Map<String, dynamic>>.from(response.data['results']);
 
       return Result.success(result.map((e) => Movie.fromJSON(e)).toList());
     } on DioException catch (e) {
