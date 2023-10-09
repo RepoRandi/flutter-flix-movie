@@ -1,13 +1,27 @@
-import 'package:flix_movie/domain/entities/user/user.dart';
+import 'package:flix_movie/presentation/providers/router/router_provider.dart';
+import 'package:flix_movie/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MainPage extends StatelessWidget {
-  final User user;
-
-  const MainPage({Key? key, required this.user}) : super(key: key);
+class MainPage extends ConsumerStatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
+  ConsumerState<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends ConsumerState<MainPage> {
+  @override
   Widget build(BuildContext context) {
+    ref.listen(
+      userDataProvider,
+      (previous, next) {
+        if (previous != null && next is AsyncData && next.value == null) {
+          ref.read(routerProvider).goNamed('login');
+        }
+      },
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Main Page'),
@@ -18,8 +32,16 @@ class MainPage extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              Center(
-                child: Text(user.toString()),
+              Text(ref.watch(userDataProvider).when(
+                    data: (data) => data.toString(),
+                    error: (error, stackTrace) => '',
+                    loading: () => 'Loading',
+                  )),
+              ElevatedButton(
+                child: const Text('Logout'),
+                onPressed: () {
+                  ref.read(userDataProvider.notifier).logout();
+                },
               )
             ],
           ),
