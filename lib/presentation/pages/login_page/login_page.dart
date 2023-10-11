@@ -1,11 +1,14 @@
 import 'package:flix_movie/presentation/extensions/build_context_extension.dart';
 import 'package:flix_movie/presentation/providers/router/router_provider.dart';
 import 'package:flix_movie/presentation/providers/user_data/user_data_provider.dart';
+import 'package:flix_movie/presentation/widgets/flix_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginPage extends ConsumerWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final TextEditingController emailController = TextEditingController();
+
+  LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,17 +32,23 @@ class LoginPage extends ConsumerWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             children: [
-              Center(
-                child: ElevatedButton(
-                  child: const Text('Login'),
-                  onPressed: () {
-                    ref.read(userDataProvider.notifier).login(
-                        email: 'devs.randi@gmail.com', password: '123456');
-                  },
-                ),
+              FlixTextField(
+                labelText: 'Email',
+                controller: emailController,
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              ElevatedButton(
+                child: const Text('Login'),
+                onPressed: () {
+                  ref
+                      .read(userDataProvider.notifier)
+                      .login(email: 'devs.randi@gmail.com', password: '123456');
+                },
               ),
             ],
           ),
