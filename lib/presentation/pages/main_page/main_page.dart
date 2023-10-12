@@ -1,4 +1,5 @@
 import 'package:flix_movie/presentation/extensions/build_context_extension.dart';
+import 'package:flix_movie/presentation/pages/profile_page/profile_page.dart';
 import 'package:flix_movie/presentation/providers/router/router_provider.dart';
 import 'package:flix_movie/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flix_movie/presentation/widgets/bottom_nav_bar.dart';
@@ -31,10 +32,6 @@ class _MainPageState extends ConsumerState<MainPage> {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main Page'),
-        actions: const [],
-      ),
       body: Stack(
         children: [
           PageView(
@@ -52,7 +49,7 @@ class _MainPageState extends ConsumerState<MainPage> {
                 child: Text('Ticket Page'),
               ),
               Center(
-                child: Text('Profile Page'),
+                child: ProfilePage(),
               )
             ],
           ),
