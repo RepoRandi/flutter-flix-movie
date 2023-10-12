@@ -1,5 +1,4 @@
 import 'package:flix_movie/presentation/extensions/build_context_extension.dart';
-import 'package:flix_movie/presentation/misc/methods.dart';
 import 'package:flix_movie/presentation/providers/router/router_provider.dart';
 import 'package:flix_movie/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flix_movie/presentation/widgets/bottom_nav_bar.dart';
