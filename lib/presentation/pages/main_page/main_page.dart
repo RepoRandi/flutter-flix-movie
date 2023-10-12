@@ -1,4 +1,5 @@
 import 'package:flix_movie/presentation/extensions/build_context_extension.dart';
+import 'package:flix_movie/presentation/pages/movie_page/movie_page.dart';
 import 'package:flix_movie/presentation/pages/profile_page/profile_page.dart';
 import 'package:flix_movie/presentation/providers/router/router_provider.dart';
 import 'package:flix_movie/presentation/providers/user_data/user_data_provider.dart';
@@ -41,14 +42,14 @@ class _MainPageState extends ConsumerState<MainPage> {
                 selectedPage = value;
               });
             },
-            children: const [
+            children: [
               Center(
-                child: Text('Movies Page'),
+                child: MoviePage(),
               ),
-              Center(
+              const Center(
                 child: Text('Ticket Page'),
               ),
-              Center(
+              const Center(
                 child: ProfilePage(),
               )
             ],
