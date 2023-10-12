@@ -1,4 +1,5 @@
 import 'package:flix_movie/presentation/extensions/build_context_extension.dart';
+import 'package:flix_movie/presentation/misc/methods.dart';
 import 'package:flix_movie/presentation/providers/router/router_provider.dart';
 import 'package:flix_movie/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flix_movie/presentation/widgets/flix_text_field.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginPage extends ConsumerWidget {
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   LoginPage({Key? key}) : super(key: key);
 
@@ -31,20 +33,71 @@ class LoginPage extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             children: [
+              verticalSpace(100),
+              Image.asset(
+                "assets/flix_logo.png",
+                width: 150.0,
+              ),
+              verticalSpace(100),
               FlixTextField(
                 labelText: 'Email',
                 controller: emailController,
               ),
-              const SizedBox(
-                height: 16.0,
+              verticalSpace(24),
+              FlixTextField(
+                labelText: 'Password',
+                obscureText: true,
+                controller: passwordController,
               ),
-              ElevatedButton(
-                child: const Text('Login'),
-                onPressed: () {
-                  ref
-                      .read(userDataProvider.notifier)
-                      .login(email: 'devs.randi@gmail.com', password: '123456');
-                },
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Forgot password?',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              verticalSpace(24),
+              switch (ref.watch(userDataProvider)) {
+                AsyncData(:final value) => value == null
+                    ? SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {
+                            ref.read(userDataProvider.notifier).login(
+                                email: emailController.text,
+                                password: passwordController.text);
+                          },
+                        ),
+                      )
+                    : const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                _ => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+              },
+              verticalSpace(24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Don't have an account? "),
+                  TextButton(
+                    child: const Text(
+                      'Register Here',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      ref.read(routerProvider).goNamed('register');
+                    },
+                  ),
+                ],
               ),
             ],
           ),
