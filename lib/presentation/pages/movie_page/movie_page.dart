@@ -21,6 +21,7 @@ class MoviePage extends ConsumerWidget {
     return ListView(
       children: [
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             userInfo(ref),
             verticalSpace(40),
