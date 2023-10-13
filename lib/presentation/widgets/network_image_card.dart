@@ -10,8 +10,8 @@ class NetworkImageCard extends StatelessWidget {
 
   const NetworkImageCard(
       {Key? key,
-      this.height = 150,
-      this.widgt = 228,
+      this.height = 228,
+      this.widgt = 150,
       this.imageUrl,
       this.fit,
       this.borderRadius = 10,
