@@ -34,8 +34,12 @@ class MoviePage extends ConsumerWidget {
                 // Move to movie detail page
               },
             ),
+            verticalSpace(30),
             ...promotionList(promotionImageFileNames),
-            ...movieList(title: 'Upcoming', movies: ref.watch(upcomingProvider))
+            verticalSpace(30),
+            ...movieList(
+                title: 'Upcoming', movies: ref.watch(upcomingProvider)),
+            verticalSpace(100)
           ],
         ),
       ],
