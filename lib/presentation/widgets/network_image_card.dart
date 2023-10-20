@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class NetworkImageCard extends StatelessWidget {
   final double height;
-  final double widgt;
+  final double width;
   final String? imageUrl;
   final BoxFit? fit;
   final double borderRadius;
@@ -11,7 +11,7 @@ class NetworkImageCard extends StatelessWidget {
   const NetworkImageCard(
       {Key? key,
       this.height = 228,
-      this.widgt = 150,
+      this.width = 150,
       this.imageUrl,
       this.fit,
       this.borderRadius = 10,
@@ -23,7 +23,7 @@ class NetworkImageCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: widgt,
+        width: width,
         height: height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
