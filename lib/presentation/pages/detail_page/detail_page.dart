@@ -1,4 +1,5 @@
 import 'package:flix_movie/domain/entities/movie/movie.dart';
+import 'package:flix_movie/domain/entities/movie_detail/movie_detail.dart';
 import 'package:flix_movie/presentation/misc/constants.dart';
 import 'package:flix_movie/presentation/misc/methods.dart';
 import 'package:flix_movie/presentation/pages/detail_page/methods/background.dart';
@@ -66,7 +67,15 @@ class DetailPage extends ConsumerWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                   child: const Text('Book this movie'),
-                  onPressed: () {},
+                  onPressed: () {
+                    MovieDetail? movieDetail = asyncMovieDetail.valueOrNull;
+
+                    if (movieDetail != null) {
+                      ref
+                          .read(routerProvider)
+                          .pushNamed('time-booking', extra: movieDetail);
+                    }
+                  },
                 ),
               )
             ],
