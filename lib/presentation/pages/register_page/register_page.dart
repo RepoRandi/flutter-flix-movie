@@ -21,6 +21,14 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
       TextEditingController();
 
   @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ref.listen(
       userDataProvider,
