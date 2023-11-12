@@ -27,7 +27,7 @@ class _MainPageState extends ConsumerState<MainPage> {
         if (previous != null && next is AsyncData && next.value == null) {
           ref.read(routerProvider).goNamed('login');
         } else if (next is AsyncError) {
-          context.showSnacbar(next.error.toString());
+          context.showSnacBar(next.error.toString());
         }
       },
     );

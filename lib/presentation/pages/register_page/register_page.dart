@@ -36,7 +36,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
         if (next is AsyncData && next.value != null) {
           ref.read(routerProvider).goNamed('main');
         } else if (next is AsyncError) {
-          context.showSnacbar(next.error.toString());
+          context.showSnacBar(next.error.toString());
         }
       },
     );
@@ -101,7 +101,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                                   password: passwordController.text,
                                   name: nameController.text);
                             } else {
-                              context.showSnacbar(
+                              context.showSnacBar(
                                   'Please retype your password with the same value');
                             }
                           },

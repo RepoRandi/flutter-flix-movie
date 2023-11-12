@@ -34,7 +34,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             ref.read(routerProvider).goNamed('main');
           }
         } else if (next is AsyncError) {
-          context.showSnacbar(next.error.toString());
+          context.showSnacBar(next.error.toString());
         }
       },
     );
