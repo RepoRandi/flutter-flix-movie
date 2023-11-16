@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flix_movie/domain/entities/movie_detail/movie_detail.dart';
 import 'package:flix_movie/domain/entities/transaction/transaction.dart';
+import 'package:flix_movie/presentation/extensions/build_context_extension.dart';
 import 'package:flix_movie/presentation/misc/constants.dart';
 import 'package:flix_movie/presentation/misc/methods.dart';
 import 'package:flix_movie/presentation/pages/seat_booking_page/methods/legend.dart';
@@ -84,7 +85,23 @@ class _SeatBookungPageState extends ConsumerState<SeatBookungPage> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (selectedSeats.isEmpty) {
+                        context.showSnacBar('Please select at least one seat');
+                      } else {
+                        var updatedTransaction = transaction.copyWith(
+                          seats:
+                              (selectedSeats..sort()).map((e) => '$e').toList(),
+                          ticketAmount: selectedSeats.length,
+                          ticketPrice: 25000,
+                        );
+
+                        ref.read(routerProvider).pushNamed(
+                          'booking-confirmation',
+                          extra: (movieDetail, updatedTransaction),
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: backgroundColor,
                       backgroundColor: saffron,
