@@ -1,5 +1,8 @@
 import 'package:flix_movie/presentation/misc/methods.dart';
+import 'package:flix_movie/presentation/pages/wallet_page/methods/recent_transactions.dart';
+import 'package:flix_movie/presentation/pages/wallet_page/methods/wallet_card.dart';
 import 'package:flix_movie/presentation/providers/router/router_provider.dart';
+import 'package:flix_movie/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flix_movie/presentation/widgets/back_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,9 +24,9 @@ class WalletPage extends ConsumerWidget {
                   onTap: () => ref.read(routerProvider).pop(),
                 ),
                 verticalSpace(24),
-                // wallet card
+                walletCard(ref),
                 verticalSpace(24),
-                // recent transactions
+                ...recentTransactions(ref)
               ],
             ),
           )

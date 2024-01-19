@@ -1,3 +1,4 @@
+import 'package:flix_movie/presentation/pages/wallet_page/methods/card_content.dart';
 import 'package:flix_movie/presentation/pages/wallet_page/methods/card_pattern.dart';
 import 'package:flix_movie/presentation/pages/wallet_page/methods/membership_banner.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ Widget walletCard(WidgetRef ref) => Container(
         children: [
           cardPattern(),
           membershipBanner(),
-          // content
+          cardContent(ref),
         ],
       ),
     );

@@ -17,7 +17,7 @@ class TopUp implements UseCase<Result<void>, TopUpParam> {
     CreateTransaction createTransaction =
         CreateTransaction(transactionRepository: _transactionRepository);
 
-    int trasactionTime = DateTime.now().microsecondsSinceEpoch;
+    int trasactionTime = DateTime.now().millisecondsSinceEpoch;
 
     var createTransactionResult = await createTransaction(
         CreateTransactionParam(

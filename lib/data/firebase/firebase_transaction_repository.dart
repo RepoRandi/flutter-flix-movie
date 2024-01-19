@@ -21,14 +21,19 @@ class FirebaseTransactionRepository implements TransactionRepository {
     try {
       var balanceResult =
           await FirebaseUserRepository().getUserBalance(uid: transaction.uid);
+
       if (balanceResult.isSuccess) {
         int previousBalance = balanceResult.resultValue!;
+
         if (previousBalance - transaction.total >= 0) {
           await transactions.doc(transaction.id).set(transaction.toJson());
+
           var result = await transactions.doc(transaction.id).get();
+
           if (result.exists) {
             await FirebaseUserRepository().updateUserBalance(
-                uid: transaction.uid, balance: transaction.balance);
+                uid: transaction.uid,
+                balance: previousBalance - transaction.total);
 
             return Result.success(Transaction.fromJson(result.data()!));
           } else {
@@ -53,6 +58,7 @@ class FirebaseTransactionRepository implements TransactionRepository {
 
     try {
       var result = await transactions.where('uid', isEqualTo: uid).get();
+
       if (result.docs.isNotEmpty) {
         return Result.success(
             result.docs.map((e) => Transaction.fromJson(e.data())).toList());

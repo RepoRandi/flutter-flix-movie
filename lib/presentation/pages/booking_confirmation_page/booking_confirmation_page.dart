@@ -110,7 +110,7 @@ class BookingConfirmationPage extends ConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () async {
-                    int transactionTime = DateTime.now().microsecondsSinceEpoch;
+                    int transactionTime = DateTime.now().millisecondsSinceEpoch;
 
                     transaction = transaction.copyWith(
                         transactionTime: transactionTime,
